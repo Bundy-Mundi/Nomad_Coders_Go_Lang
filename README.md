@@ -3,3 +3,5 @@
 #### 1. Bank Account Challenge
 
 #### 2. Dictionary Challenge
+
+#### 3. Go Routine with Slowchecker and FastChecker

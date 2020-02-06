@@ -13,7 +13,6 @@ var (
 	errAlreadyExist = errors.New("The Word Already Exist")
 	errCannotUpdate = errors.New("The Word Can't be Updated. Try to Add it First")
 	errCannotDelete = errors.New("The Word Can't be Deleted. Try to Add it First")
-
 )
 
 // Search for a word
@@ -38,7 +37,7 @@ func (d Dictionary) Add(word string, def string) error {
 }
 
 // Update a Word
-func (d Dictionary) Update(word string, def string) error{
+func (d Dictionary) Update(word string, def string) error {
 	_, err := d.Search(word)
 	switch err {
 	case errAlreadyExist:
@@ -52,20 +51,20 @@ func (d Dictionary) Update(word string, def string) error{
 // Delete a Word
 func (d Dictionary) Delete(word string) (string, error) {
 	_, exists := d[word]
-	if exists{
+	if exists {
 		delete(d, word)
-	}else{
+	} else {
 		return "", errCannotDelete
 	}
 	return word, nil
 }
 
-// MyAdd words 
-func (d Dictionary) MyAdd(word string, def string) error{
+// MyAdd words
+func (d Dictionary) MyAdd(word string, def string) error {
 	_, exists := d[word]
 	if !exists {
 		d[word] = def
-	}else{
+	} else {
 		return errAlreadyExist
 	}
 	return nil
@@ -74,14 +73,14 @@ func (d Dictionary) MyAdd(word string, def string) error{
 // MyUpdate a word
 func (d Dictionary) MyUpdate(word string, newDef string) (string, error) {
 	v, err := d.Search(word)
-	if err == errAlreadyExist{
+	if err == errAlreadyExist {
 		d[word] = newDef
-	}else{
+	} else {
 		return v, errDoesNotExist
 	}
 	return v, nil
 }
 
-func (d Dictionary) String() map[string]string{
+func (d Dictionary) String() map[string]string {
 	return d
 }
